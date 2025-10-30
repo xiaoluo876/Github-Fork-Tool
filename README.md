@@ -1,33 +1,31 @@
-GitHub Fork Sync Tool
+# GitHub仓库Fork更新最终版 Tool
+
+![Version](https://img.shields.io/badge/Version-2.0.0-brightgreen.svg)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows%20%7C%20Android-blue.svg)
+![Shell](https://img.shields.io/badge/Shell-Bash-yellow.svg)
 
 一个强大的 GitHub 复刻仓库同步工具，可以自动将你的复刻仓库与上游原始仓库保持同步，确保你不会错过任何更新。
 
-https://img.shields.io/badge/Version-2.0.0-brightgreen.svg
-https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows%20%7C%20Android-blue.svg
-https://img.shields.io/badge/Shell-Bash-yellow.svg
+## 🌟 功能特性
 
-🌟 功能特性
+- 🔄 **自动同步** - 一键同步复刻仓库的所有提交记录
+- 🔐 **安全认证** - 使用 GitHub Token 进行安全认证
+- 📱 **多平台支持** - 支持 Linux、macOS、Windows 和 Android (Termux)
+- 🎯 **智能选择** - 自动列出所有复刻仓库供选择
+- 🔄 **重试机制** - 网络操作失败时自动重试
+- 💾 **配置保存** - Token 和配置信息安全保存
+- 🛡️ **安全备份** - 自动备份本地更改
 
-· 🔄 自动同步 - 一键同步复刻仓库的所有提交记录
-· 🔐 安全认证 - 使用 GitHub Token 进行安全认证
-· 📱 多平台支持 - 支持 Linux、macOS、Windows 和 Android (Termux)
-· 🎯 智能选择 - 自动列出所有复刻仓库供选择
-· 🔄 重试机制 - 网络操作失败时自动重试
-· 💾 配置保存 - Token 和配置信息安全保存
-· 🛡️ 安全备份 - 自动备份本地更改
+## 📋 前提条件
 
-📋 前提条件
+### 基础要求
+- Git
+- curl
+- jq
 
-基础要求
+### 各平台安装方法
 
-· Git
-· curl
-· jq
-
-各平台安装方法
-
-Linux (Ubuntu/Debian)
-
+#### Linux (Ubuntu/Debian)
 ```bash
 sudo apt update && sudo apt install git curl jq
 ```
@@ -67,11 +65,11 @@ pkg install git curl jq
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/github-fork-sync-tool.git
-cd github-fork-sync-tool
+git clone https://github.com/2992253553/Github-fork-sync-tool.git
+cd Github-fork-sync-tool
 
 # 或者直接下载脚本
-curl -O https://raw.githubusercontent.com/your-username/github-fork-sync-tool/main/github_fork_sync.sh
+curl -O https://raw.githubusercontent.com/2992253553/Github-fork-sync-tool/main/github_fork_sync.sh
 chmod +x github_fork_sync.sh
 ```
 
@@ -161,8 +159,8 @@ git config --global user.email "你的GitHub邮箱"
 
 # 获取脚本
 cd ~
-git clone https://github.com/your-username/github-fork-sync-tool.git
-cd github-fork-sync-tool
+git clone https://github.com/2992253553/Github-fork-sync-tool.git
+cd Github-fork-sync-tool
 chmod +x github_fork_sync.sh
 
 # 运行脚本
@@ -176,7 +174,7 @@ chmod +x github_fork_sync.sh
 nano ~/.bashrc
 
 # 添加别名
-alias sync-fork='~/github-fork-sync-tool/github_fork_sync.sh'
+alias sync-fork='~/Github-fork-sync-tool/github_fork_sync.sh'
 
 # 重新加载配置
 source ~/.bashrc
@@ -200,28 +198,6 @@ crontab -e
 
 # 或者每天同步（凌晨2点）
 0 2 * * * /path/to/github_fork_sync.sh
-```
-
-使用 Tasker (Android)
-
-1. 安装 Termux 和 Tasker
-2. 在 Tasker 中创建定时任务
-3. 执行 Termux 命令：./github-fork-sync-tool/github_fork_sync.sh
-
-批量同步多个仓库
-
-创建批量同步脚本 sync_all_forks.sh：
-
-```bash
-#!/bin/bash
-# 获取所有复刻仓库列表
-REPOS=$(curl -s -H "Authorization: token YOUR_TOKEN" \
-  "https://api.github.com/user/repos?type=forks" | jq -r '.[].full_name')
-
-for repo in $REPOS; do
-  echo "正在同步: $repo"
-  # 这里可以扩展为逐个同步
-done
 ```
 
 🛠️ 故障排除
@@ -261,42 +237,13 @@ git config --global --add safe.directory /current/path
   export https_proxy="http://proxy-ip:port"
   ```
 
-4. 权限被拒绝
-
-症状：Permission denied
-
-解决方案：
-
-```bash
-# 给脚本执行权限
-chmod +x github_fork_sync.sh
-
-# 或使用 bash 直接运行
-bash github_fork_sync.sh
-```
-
-日志和调试
-
-启用详细日志：
-
-```bash
-# 显示详细执行过程
-bash -x github_fork_sync.sh
-
-# 或者输出到日志文件
-./github_fork_sync.sh 2>&1 | tee sync.log
-```
-
 📁 文件结构
 
 ```
-github-fork-sync-tool/
+Github-fork-sync-tool/
 ├── github_fork_sync.sh          # 主脚本文件
 ├── README.md                    # 说明文档
-├── LICENSE                      # 许可证文件
-└── examples/                    # 示例文件
-    ├── sync_all_forks.sh        # 批量同步示例
-    └── crontab.example          # 定时任务示例
+└── LICENSE                      # 许可证文件
 ```
 
 配置文件位置
@@ -337,7 +284,7 @@ github-fork-sync-tool/
 
 如果你遇到问题：
 
-1. 查看 故障排除 部分
+1. 查看故障排除部分
 2. 检查 Issues 是否有类似问题
 3. 创建新的 Issue 并提供：
    · 操作系统和环境信息
